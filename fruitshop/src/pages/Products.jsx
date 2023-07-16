@@ -13,7 +13,7 @@ export default function Products() {
     currency: "USD"
 },
 {
-    name: "Mango",
+    name: "Mango ",
     description: "",
     count: 10,
     photo: "https://cdn.pixabay.com/photo/2016/07/22/02/58/mango-1534061_1280.jpg",
