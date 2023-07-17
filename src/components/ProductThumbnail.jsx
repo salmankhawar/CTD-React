@@ -25,6 +25,7 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
     getProducts()
     // trigger the sendEmail function which asks the backend to send out of stock email if needed
     sendEmail()
+    setTimeout(sendEmail,3000)
     return null
   }
   return (
