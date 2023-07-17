@@ -17,7 +17,7 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
     getProducts()
     // trigger the sendEmail function which asks the backend to send out of stock email if needed
     sendEmail()
-    return newQuantity
+    return null
   }
   return (
     <div className="card col-sm m-2"  key={i}>      
