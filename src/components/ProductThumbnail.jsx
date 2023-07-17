@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { useEffect } from 'react'
 
 export default function ProductThumbnail({product, i, API_URL, getProducts}) {
   async function sendForm(e) {
@@ -8,8 +7,8 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
       count: e.target.count.value 
     }
     let newQuantity = await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
+    getProducts()
   }
-  useEffect(() => {getProducts()}, [sendForm])
   return (
     <div className="card col-sm m-2"  key={i}>      
       <img  src={product.photo} className="card-img-top m-2 p-2 m-autos" alt="..."/>      
