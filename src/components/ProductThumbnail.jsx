@@ -8,27 +8,17 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
   // send count and request to API when quantity/count needs to be updated on submission of update button
   async function sendForm(e) {
     e.preventDefault()
-    let updatedProduct = {
+    try {let updatedProduct = {
       count: e.target.count.value 
     }
     await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
     // reload products with updated quantities
     getProducts()
-  }
-  async function sendEmail() { 
-    if (product.count === 0) {
-      try {
-        await axios.post(`${API_URL}/email`, product)
-        console.log('Email sent successfully!')
-      } catch (error) {
-        console.error('Error sending email:', error)
-      }
-    } else {
-      console.log('Product count is not zero, no need to send email.')
+    } catch(err) {
+      console.log(err)
     }
   }
-  // trigger the sendEmail function which asks the backend to send out of stock email if needed
-  useEffect (() => {sendEmail()},[product.count])
+  
   return (
     <div className="card col-sm m-2"  key={i}>      
       <img  src={product.photo} className="card-img-top m-2 p-2 m-autos" alt="..."/>      

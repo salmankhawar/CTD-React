@@ -9,8 +9,11 @@ export default function Products() {
   const [products, setProducts] = useState ([])
   // define function to import data from the API
   async function getProducts() {
-    let productsData = await axios.get(`${API_URL}`)
-    setProducts(productsData.data)
+    try { let productsData = await axios.get(`${API_URL}`)
+      setProducts(productsData.data)
+    } catch(err){
+      console.log(err)
+    }
   }
   useEffect(() => {getProducts()}, [])
   return (

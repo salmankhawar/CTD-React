@@ -22,6 +22,7 @@ export default function CreateProduct() {
     }
     try{
       let post = await axios.post(`${API_URL}`, product)
+      console.log('Product Listed Successfully')
       navigate(`/`)
     } catch(err) {
       console.log(err)
