@@ -3,7 +3,8 @@ import axios from 'axios'
 export default function ProductThumbnail({product, i, API_URL, getProducts}) {
   // send data and request to API when product is zero in stock
   async function sendEmail() { 
-    return product.count === 0 ? await axios.post(`${API_URL}/email`, product) : null
+    product.count === 0 ? await axios.post(`${API_URL}/email`, product) : null
+    return null
   }
   // send count and request to API when quantity/count needs to be updated on submission of update button
   async function sendForm(e) {
