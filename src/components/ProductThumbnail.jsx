@@ -1,22 +1,19 @@
 import axios from 'axios'
-import { useEffect } from 'react'
+
 
 
 export default function ProductThumbnail({product, i, API_URL, getProducts}) {
-  // send data and request to API when product is zero in stock
+ 
   
   // send count and request to API when quantity/count needs to be updated on submission of update button
   async function sendForm(e) {
     e.preventDefault()
-    try {let updatedProduct = {
+    let updatedProduct = {
       count: e.target.count.value 
     }
     await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
     // reload products with updated quantities
     getProducts()
-    } catch(err) {
-      console.log(err)
-    }
   }
   
   return (
