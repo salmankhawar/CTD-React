@@ -1,13 +1,16 @@
 import axios from 'axios'
 
 export default function ProductThumbnail({product, i, API_URL, getProducts}) {
+  async function sendEmail() {
+    product.count === 0 ? await axios.post(`${API_URL}/email`, product) : null
+  }
   async function sendForm(e) {
     e.preventDefault()
     let updatedProduct = {
       count: e.target.count.value 
     }
     let newQuantity = await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
-    getProducts()
+    getProducts(), sendEmail()
   }
   return (
     <div className="card col-sm m-2"  key={i}>      
