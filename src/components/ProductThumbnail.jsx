@@ -4,6 +4,17 @@ import { useEffect } from 'react'
 
 export default function ProductThumbnail({product, i, API_URL, getProducts}) {
   // send data and request to API when product is zero in stock
+  
+  // send count and request to API when quantity/count needs to be updated on submission of update button
+  async function sendForm(e) {
+    e.preventDefault()
+    let updatedProduct = {
+      count: e.target.count.value 
+    }
+    await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
+    // reload products with updated quantities
+    getProducts()
+  }
   async function sendEmail() { 
     if (product.count === 0) {
       try {
@@ -15,16 +26,6 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
     } else {
       console.log('Product count is not zero, no need to send email.')
     }
-  }
-  // send count and request to API when quantity/count needs to be updated on submission of update button
-  async function sendForm(e) {
-    e.preventDefault()
-    let updatedProduct = {
-      count: e.target.count.value 
-    }
-    await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
-    // reload products with updated quantities
-    getProducts()
   }
   // trigger the sendEmail function which asks the backend to send out of stock email if needed
   useEffect (() => {sendEmail()},[product.count])
