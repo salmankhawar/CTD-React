@@ -1,4 +1,6 @@
 import axios from 'axios'
+import { useEffect } from 'react'
+
 
 export default function ProductThumbnail({product, i, API_URL, getProducts}) {
   // send data and request to API when product is zero in stock
@@ -23,11 +25,9 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
     await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
     // reload products with updated quantities
     getProducts()
-    // trigger the sendEmail function which asks the backend to send out of stock email if needed
-    sendEmail()
-    setTimeout(sendEmail,3000)
-    return null
   }
+  // trigger the sendEmail function which asks the backend to send out of stock email if needed
+  useEffect (() => {sendEmail()},[product.count])
   return (
     <div className="card col-sm m-2"  key={i}>      
       <img  src={product.photo} className="card-img-top m-2 p-2 m-autos" alt="..."/>      
