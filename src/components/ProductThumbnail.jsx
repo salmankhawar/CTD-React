@@ -13,9 +13,10 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
     }
     let newQuantity = await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
     // reload products with updated quantities
-    getProducts(),
+    getProducts()
     // trigger the sendEmail function which asks the backend to send out of stock email if needed
     sendEmail()
+    return newQuantity
   }
   return (
     <div className="card col-sm m-2"  key={i}>      
