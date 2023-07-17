@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default function ProductThumbnail({product, i, API_URL, getProducts}) {
   // send data and request to API when product is zero in stock
-  async function sendEmail(product) { 
+  async function sendEmail() { 
     if (product.count === 0) {
       try {
         await axios.post(`${API_URL}/email`, product)
