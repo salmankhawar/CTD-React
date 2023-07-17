@@ -2,9 +2,17 @@ import axios from 'axios'
 
 export default function ProductThumbnail({product, i, API_URL, getProducts}) {
   // send data and request to API when product is zero in stock
-  async function sendEmail() { 
-    product.count === 0 ? await axios.post(`${API_URL}/email`, product) : null
-    return null
+  async function sendEmail(product) { 
+    if (product.count === 0) {
+      try {
+        await axios.post(`${API_URL}/email`, product)
+        console.log('Email sent successfully!')
+      } catch (error) {
+        console.error('Error sending email:', error)
+      }
+    } else {
+      console.log('Product count is not zero, no need to send email.')
+    }
   }
   // send count and request to API when quantity/count needs to be updated on submission of update button
   async function sendForm(e) {
@@ -12,7 +20,7 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
     let updatedProduct = {
       count: e.target.count.value 
     }
-    let newQuantity = await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
+    await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
     // reload products with updated quantities
     getProducts()
     // trigger the sendEmail function which asks the backend to send out of stock email if needed
