@@ -24,7 +24,7 @@ export default function Products() {
       <div className="container bg-light p-4 col-8 ">
         <div className="row col-12 col-sm-6 col-md-4 col-lg-2 justify-content-center ms-4">
           <div className="col-12 m-2">
-
+            
           </div>
         </div>
       </div>
