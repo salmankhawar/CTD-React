@@ -22,7 +22,7 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
       <img  src={product.photo} className="card-img-top m-2 p-2 m-autos" alt="..."/>      
       <div className="card-body">
         <h5 className="card-title">{product.title}</h5>
-        <p className="card-text">{product.description}</p>
+        <p className="card-text">{product.description.length > 250 ? `${product.description.substring(0, 250)}...` : product.description}</p>
       </div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item text-center">Available to buy: {product.count} {product.uom}</li>
