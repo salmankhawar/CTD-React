@@ -15,6 +15,7 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
     let post = await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
     // reload products with updated quantities
     setErrorMessage(post.data), getProducts()
+    return null
   }
   
   return (
