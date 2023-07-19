@@ -18,8 +18,10 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
   }
   
   return (
-    <div className="card col-12 col-sm-6 col-md-4 col-lg-3 m-2"  key={i}>      
-      <img  src={product.photo} className="card-img-top m-2 p-2 m-autos" alt="..."/>      
+    <div className="card col-12 col-sm-6 col-md-4 col-lg-3 m-2 jutify-content-center"  key={i}>      
+      
+      <img  src={product.photo} className="card-img h-75 p-2" alt="..."/>
+
       <div className="card-body">
         <h5 className="card-title">{product.title}</h5>
         <p className="card-text">{product.description.length > 250 ? `${product.description.substring(0, 250)}...` : product.description}</p>

@@ -2,6 +2,7 @@ import axios from 'axios'
 import validator from 'validator'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import Nav from '../components/Nav'
 // define environment variable
 const API_URL = process.env.REACT_APP_API_URL
 
@@ -38,6 +39,7 @@ export default function CreateProduct() {
     
   return (
     <>
+      <Nav />
       <div className="container ">
         <div className="row col-sm justify-content-md-center">
           <div className="input-group row">
@@ -82,9 +84,6 @@ export default function CreateProduct() {
                 <button className="btn btn-success col-5 m-4">Submit</button>
               </div>
             </form>
-            {/* Add Home Button */}
-            <Link className="row justify-content-center" to="/"><button className="btn btn-primary col-2 m-4">Home</button>
-            </Link>
           </div>
         </div>
       </div>
