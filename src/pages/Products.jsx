@@ -15,29 +15,28 @@ export default function Products() {
       console.log(err)
     }
   }
-  useEffect(() => {getProducts()}, [])
+  useEffect(() => {getProducts()})
   return (
     <>
-      {/* Make a container for the create product button */}
-      <div className='container-fluid '>
-        {/* Add Create Product Button */}
-        <Link className="row justify-content-center" to="/createproduct"><button className="btn btn-primary col-4 m-4">Create Product</button>
-        </Link>
-      </div>
       {/* Make a conditional statement to see if the any products exist */}
-         
-      {/*  Make a container for the product cards grid */}
       {Array.isArray(products) && products.length > 0 ?
-        (<div className="container-fluid ">
+        // {/*  Make a container for the product cards grid */}
+        (<div className="container ">
           {/* Define row for the product cards grid */}
-          <div className="row">
+          <div className="row justify-content-center">
             {/* Map the array of products to each card to represent each product */}
             {products.map((product, i) =>
             // Display a card for each product. Render the Product Thumbnail component, pass props
               <ProductThumbnail product={product} key={i} API_URL={API_URL} getProducts={getProducts} />
             )}
           </div>
-        </div> ) : (<h1 className="center-text">There are no Products Listed</h1>)} 
+        </div> ) : (<h1 className="center-text">There are no Products Listed</h1>)}
+      {/* Make a container for the create product button */}
+      <div className='container-fluid '>
+        {/* Add Create Product Button */}
+        <Link className="row justify-content-center" to="/createproduct"><button className="btn btn-primary col-4 m-4">Create Product</button>
+        </Link>
+      </div> 
     </>  
   )
 }

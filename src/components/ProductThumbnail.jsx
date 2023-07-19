@@ -1,23 +1,24 @@
 import axios from 'axios'
+import { useState } from 'react'
 
 
 
 export default function ProductThumbnail({product, i, API_URL, getProducts}) {
  
-  
+  const [errorMessage, setErrorMessage] = useState('')
   // send count and request to API when quantity/count needs to be updated on submission of update button
   async function sendForm(e) {
     e.preventDefault()
     let updatedProduct = {
       count: e.target.count.value 
     }
-    await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
+    let post = await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
     // reload products with updated quantities
-    getProducts()
+    setErrorMessage(post.data), getProducts()
   }
   
   return (
-    <div className="card col-sm m-2"  key={i}>      
+    <div className="card col-12 col-sm-6 col-md-4 col-lg-3 m-2"  key={i}>      
       <img  src={product.photo} className="card-img-top m-2 p-2 m-autos" alt="..."/>      
       <div className="card-body">
         <h5 className="card-title">{product.title}</h5>
@@ -33,7 +34,9 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
               type="number"
               className="form-control text-center"
               name="count"
+              min="0"
             />
+            <span className="text-success text-center">{errorMessage}</span>
             <button className="btn btn-primary">Update</button>
           </form>
         </li>
