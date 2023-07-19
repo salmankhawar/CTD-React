@@ -32,18 +32,12 @@ export default function CreateProduct() {
         console.log(err)
       }
     } else {
-      setUrlErrorMessage('Please enter a valid URL')
+      setUrlErrorMessage('Please enter a valid URL!')
     }
   }
     
   return (
     <>
-      {/* Make a container for the create product button */}
-      <div className='container-fluid '>
-        {/* Add Home Button */}
-        <Link className="row justify-content-center" to="/"><button className="btn btn-primary col-4 m-4">Home</button>
-        </Link>
-      </div>
       <div className="container ">
         <div className="row col-sm justify-content-md-center">
           <div className="input-group row">
@@ -84,10 +78,19 @@ export default function CreateProduct() {
               <label>Price:</label>
               <input required name="price" type="number" className="form-control" min="0" step="0.01"/>
               <span className="text-success text-center">{errorMessage}</span>
-              <button className="btn btn-primary m-4">Submit</button>
+              <div className='text-center'>
+                <button className="btn btn-success col-5 m-4">Submit</button>
+              </div>
             </form>
+            {/* Add Home Button */}
+            <Link className="row justify-content-center" to="/"><button className="btn btn-primary col-2 m-4">Home</button>
+            </Link>
           </div>
         </div>
+      </div>
+      {/* Make a container for the create product button */}
+      <div className='container'>
+        
       </div>
     </>
   )

@@ -34,7 +34,7 @@ export default function Products() {
       {/* Make a container for the create product button */}
       <div className='container-fluid '>
         {/* Add Create Product Button */}
-        <Link className="row justify-content-center" to="/createproduct"><button className="btn btn-primary col-4 m-4">Create Product</button>
+        <Link className="row justify-content-center" to="/createproduct"><button className="btn btn-primary col-2 m-4">Create Product</button>
         </Link>
       </div> 
     </>  
