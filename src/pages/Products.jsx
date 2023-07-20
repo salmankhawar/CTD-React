@@ -15,7 +15,8 @@ export default function Products() {
   // setup external API to convert GBP into USD
   async function getRates() {
     try {let currencyRates = await axios.get(`http://apilayer.net/api/live?access_key=${EAPI_KEY}`)
-      setConversion(currencyRates.data.quotes.USDGBP)} catch(err) {
+      setConversion(currencyRates.data.quotes.USDGBP)
+    } catch(err) {
       console.log(err)
     }
   }
