@@ -30,7 +30,7 @@ export default function Products() {
         console.log(err)
       }
     } else {
-      null
+      console.log('Awaiting Exchange Rate')
     }
   }
   
