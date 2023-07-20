@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 
 
-export default function ProductThumbnail({product, i, API_URL, getProducts}) {
+export default function ProductThumbnail({product, i, API_URL, getProducts, conversion}) {
  
   const [errorMessage, setErrorMessage] = useState('')
   // send count and request to API when quantity/count needs to be updated on submission of update button
@@ -26,7 +26,7 @@ export default function ProductThumbnail({product, i, API_URL, getProducts}) {
       </div>
       <ul className="list-group list-group-flush">
         <li className="list-group-item text-center">Available to buy: {product.count} {product.uom}</li>
-        <li className="list-group-item text-center">Price: {product.currency} {product.price}/{product.uom}</li>
+        <li className="list-group-item text-center">Price: $ {product.currency === 'GBP' ? Math.round(product.price*conversion*100)/100 : product.price}/{product.uom}</li>
         <li className="list-group-item">
           <form className="d-grid gap-2 col-6 mx-auto" onSubmit={(e) => sendForm(e)}>
             <label className="text-center"><h5>Update Quantity:</h5></label>
