@@ -13,34 +13,38 @@ const API_URL = process.env.REACT_APP_API_URL
 export default function CreateProduct() {
   const [urlErrorMessage, setUrlErrorMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+
   async function sendForm(e) {
     e.preventDefault()
-    let product = {
+    let formValues = {
       title: e.target.title.value,
       description: e.target.description.value,
       photo: e.target.photo.value,
       price: e.target.price.value,
       uom: e.target.uom.value,
       currency: e.target.currency.value,
-      count: e.target.count.value,
+      count: e.target.count.value
     }
-    
+
     if (validator.isURL(e.target.photo.value)) {
-      try{
-        let post = await axios.post(`${API_URL}`, product)
+      try {
+        let post = await axios.post(`${API_URL}`, formValues)
         setErrorMessage(post.data)
-      } catch(err) {
+      } catch (err) {
         console.log(err)
       }
     } else {
       setUrlErrorMessage('Please enter a valid URL!')
     }
+
+    // Reset the form after submission
+    e.target.reset()
   }
-    
+
   return (
     <>
       <Nav />
-      <div className="container ">
+      <div className="container">
         <div className="row col-sm justify-content-md-center">
           <div className="input-group row">
             <h1 className="text-center">List A Product</h1>
@@ -66,7 +70,7 @@ export default function CreateProduct() {
                 className="form-control"
               >
                 <option value="KG">KG</option>
-                <option value="dozen">Dozen</option> 
+                <option value="dozen">Dozen</option>
               </select>
               <label>Currency:</label>
               <div>
@@ -86,10 +90,6 @@ export default function CreateProduct() {
             </form>
           </div>
         </div>
-      </div>
-      {/* Make a container for the create product button */}
-      <div className='container'>
-        
       </div>
     </>
   )

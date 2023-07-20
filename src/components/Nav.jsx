@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default function Nav() {
   return (
   // create container for the Navigation bar
-    <div className="container">
+    <div className="container col-9">
       <div className='grid text-center'>
         {/* Add Home Button */}
         <Link to="/"><button className="btn btn-primary col-12 col-sm-4 col-md-3 m-4">Home</button>
