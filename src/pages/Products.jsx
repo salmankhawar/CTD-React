@@ -31,7 +31,7 @@ export default function Products() {
   }
 
   
-  useEffect(() => {getProducts(),getRates()},[ProductThumbnail])
+  useEffect(() => {getProducts(),getRates()},[])
   return (
     <>
       <Nav />

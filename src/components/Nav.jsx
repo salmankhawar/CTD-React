@@ -11,7 +11,7 @@ export default function Nav() {
         {/* Add Create Product Button */}
         <Link to="/createproduct"><button className="btn btn-primary col-12 col-sm-4 col-md-3 m-4">Create Product</button>
         </Link>
-        {/* Add Walkhthrouh Button */}
+        {/* Add Walkhthrough Button */}
         <Link to="/walkthrough"><button className="btn btn-primary col-12 col-sm-4 col-md-3 m-4">Walkthrough</button></Link>
       </div>
     </div>
