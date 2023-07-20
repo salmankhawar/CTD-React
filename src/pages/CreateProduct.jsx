@@ -1,6 +1,5 @@
 import axios from 'axios'
 import validator from 'validator'
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import Nav from '../components/Nav'
 // define environment variable
