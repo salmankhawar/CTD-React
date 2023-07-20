@@ -27,8 +27,9 @@ export default function Products() {
     }
   }
 
-  useEffect(() => {getRates()}, [])
-  useEffect(() => {getProducts()},[conversion])
+  
+  useEffect(() => {getProducts()},[])
+  useEffect(() => {getRates()}, [products])
   
   return (
     <>
