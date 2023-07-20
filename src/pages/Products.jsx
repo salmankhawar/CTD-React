@@ -16,6 +16,7 @@ export default function Products() {
   async function getRates() {
     try {let currencyRates = await axios.get(`http://apilayer.net/api/live?access_key=${EAPI_KEY}`)
       setConversion(currencyRates.data.quotes.USDGBP)
+      getProducts()
     } catch(err) {
       console.log(err)
     }
@@ -35,7 +36,6 @@ export default function Products() {
   }
   
   useEffect(() => {getRates()})
-  useEffect(() => {getProducts()},[conversion])
 
 
   return (
