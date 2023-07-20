@@ -18,7 +18,7 @@ export default function Products() {
     } catch(err) {
       console.log(err)
     }
-    return conversion
+    return currencyRates.data
   }
 
   // define function to import data from the API
@@ -28,7 +28,7 @@ export default function Products() {
     } catch(err){
       console.log(err)
     }
-    return products
+    return productsData.data
   }
 
   
