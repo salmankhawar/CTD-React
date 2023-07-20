@@ -14,21 +14,19 @@ export default function Products() {
   // setup external API to convert GBP into USD
   async function getRates() {
     try {let currencyRates = await axios.get(`http://apilayer.net/api/live?access_key=${EAPI_KEY}`)
-      setConversion(currencyRates.data.quotes.USDGBP)
+      return  setConversion(currencyRates.data.quotes.USDGBP)
     } catch(err) {
       console.log(err)
     }
-    return conversion
   }
 
   // define function to import data from the API
   async function getProducts() {
     try { let productsData = await axios.get(`${API_URL}`)
-      setProducts(productsData.data)
+      return setProducts(productsData.data)
     } catch(err){
       console.log(err)
     }
-    return products
   }
 
   
