@@ -37,7 +37,7 @@ export default function ProductThumbnail({ product, i, API_URL, getProducts, con
               className="form-control text-center"
               name="count"
               min="0"
-              value=""
+
             />
             <span className="text-success text-center">{errorMessage}</span>
             <button className="btn btn-primary">Update</button>
