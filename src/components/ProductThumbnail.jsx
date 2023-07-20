@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 
 
@@ -14,10 +14,12 @@ export default function ProductThumbnail({ product, i, API_URL, getProducts, con
     }
     let post = await axios.patch(`${API_URL}/${product._id}`, updatedProduct)
     // reload products with updated quantities
-    setErrorMessage(post.data), getProducts()
+    setErrorMessage(post.data)
     // Reset the form after submission
     e.target.reset()
   }
+
+  useEffect(() =>{getProducts()}, [errorMessage] )
 
   return (
     <div className="card col-12 col-sm-6 col-md-4 col-lg-3 m-2 jutify-content-center" key={i}>
