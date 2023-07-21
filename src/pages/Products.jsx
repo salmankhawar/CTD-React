@@ -13,16 +13,25 @@ export default function Products() {
 
   // setup external API to convert GBP into USD
   async function getRates() {
-    try {let currencyRates = await axios.get('https://api.apilayer.com/currency_data/live?source=USD&currencies=GBP',
-      {
-        headers: {
-          'apikey': EAPI_KEY,
-        },
-      })
-    let usdgbp = currencyRates.data.quotes.USDGBP
-    getProducts(usdgbp)
-    } catch(err) {
-      console.log(err)
+    const timeout = 10000 // 10 seconds
+    try {
+      const currencyRates = await axios.get(
+        'https://api.apilayer.com/currency_data/live?source=USD&currencies=GBP',
+        {
+          headers: {
+            'apikey': EAPI_KEY,
+          },
+          timeout,
+        }
+      )
+      let usdgbp = currencyRates.data.quotes.USDGBP
+      getProducts(usdgbp)
+    } catch (err) {
+      if (err.response && err.response.status === 408) {
+        console.log('Request timed out')
+      } else {
+        console.log(err)
+      }
     }
   }
 
