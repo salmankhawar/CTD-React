@@ -15,13 +15,11 @@ export default function FilterBar({ products, setProducts}) {
   // Update products when sort by is changed
   function handleSortChange(e) {
     setSortBy(e.target.value)
-    setProducts(sortedProducts)
   }
 
   // Update products when sort order is changed
   function handleSortOrderChange(e) {
     setSortOrder(e.target.value)
-    setProducts(sortedProducts)
   }
 
   let newFilteredProducts = products.filter((product) => 
@@ -33,9 +31,9 @@ export default function FilterBar({ products, setProducts}) {
     switch (sortBy) {
     case 'price':
       if (sortOrder === 'asc') {
-        return b.price - a.price 
-      } else {
         return a.price - b.price
+      } else {
+        return b.price - a.price
       }
     case 'name':
       if (sortOrder === 'asc') {
@@ -48,8 +46,10 @@ export default function FilterBar({ products, setProducts}) {
     }
   })
 
-  useEffect (() => {setProducts(sortedProducts)}, [searchTerm])
-  
+  useEffect(() => {setProducts(sortedProducts)})
+  useEffect(() => {setProducts(sortedProducts)}, [searchTerm])
+  useEffect(() => {setProducts(sortedProducts)}, [sortOrder])
+  useEffect(() => {setProducts(sortedProducts)}, [sortBy] )
   
   
   
