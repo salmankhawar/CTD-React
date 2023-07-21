@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 
 
-export default function ProductThumbnail({ product, i, API_URL, getProducts}) {
+export default function ProductThumbnail({ product, i, API_URL, getRates}) {
   const [errorMessage, setErrorMessage] = useState('')
 
   // send count and request to API when quantity/count needs to be updated on submission of update button
@@ -19,7 +19,7 @@ export default function ProductThumbnail({ product, i, API_URL, getProducts}) {
     e.target.reset()
   }
 
-  useEffect(() =>{getProducts()}, [errorMessage] )
+  useEffect(() =>{getRates()}, [errorMessage] )
 
   return (
     <div className="card col-12 col-sm-6 col-md-4 col-lg-3 m-2 jutify-content-center" key={i}>

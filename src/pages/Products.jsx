@@ -27,7 +27,6 @@ export default function Products() {
         }
       )
       let usdgbp = currencyRates.data.quotes.USDGBP
-      console.log(usdgbp)
       getProducts(usdgbp)
     } catch (err) {
       if (err.response && err.response.status === 408) {
@@ -78,7 +77,7 @@ export default function Products() {
             {/* Map the array of products to each card to represent each product */}
             {filteredProducts.map((product, i) =>
             // Display a card for each product. Render the Product Thumbnail component, pass props
-              <ProductThumbnail product={product} key={i} API_URL={API_URL} getProducts={getProducts} />
+              <ProductThumbnail product={product} key={i} API_URL={API_URL} getRates={getRates} />
             )}
           </div>
         </div> ) : (
