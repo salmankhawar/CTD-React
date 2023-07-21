@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 export default function FilterBar({ products, setProducts}) {
 // Define States
   const [searchTerm, setSearchTerm] = useState('')
-  const [sortBy, setSortBy] = useState('price')
+  const [sortBy, setSortBy] = useState('name')
   const [sortOrder, setSortOrder] = useState('asc')
 
   // Update products when search term is entered
