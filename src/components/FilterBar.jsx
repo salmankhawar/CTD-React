@@ -33,9 +33,9 @@ export default function FilterBar({ products, setProducts}) {
     switch (sortBy) {
     case 'price':
       if (sortOrder === 'asc') {
-        return a.price - b.price
+        return b.price - a.price 
       } else {
-        return b.price - a.price
+        return a.price - b.price
       }
     case 'name':
       if (sortOrder === 'asc') {
