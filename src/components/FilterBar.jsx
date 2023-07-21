@@ -10,6 +10,7 @@ export default function FilterBar({ products, setProducts}) {
   // Update products when search term is entered
   function handleSearchChange(e) {
     setSearchTerm(e.target.value)
+    setProducts(sortedProducts)
   }
 
   // Update products when sort by is changed
@@ -24,9 +25,12 @@ export default function FilterBar({ products, setProducts}) {
     setProducts(sortedProducts)
   }
 
+  let newFilteredProducts = products.filter((product) => 
+    product.title.toLowerCase().includes(searchTerm.toLowerCase())
+  )
   
 
-  const sortedProducts = products.sort((a, b) => {
+  const sortedProducts = newFilteredProducts.sort((a, b) => {
     switch (sortBy) {
     case 'price':
       if (sortOrder === 'asc') {
@@ -45,15 +49,10 @@ export default function FilterBar({ products, setProducts}) {
     }
   })
 
-  function searchProducts(){
-    let filteredProducts = products.filter((product) => 
-      product.title.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    console.log(filteredProducts)
-    setProducts(filteredProducts)
-  }
+    
   
-  useEffect(() =>{searchProducts()}, [searchTerm] )
+  
+  
   
   return (
     <>
@@ -89,4 +88,3 @@ export default function FilterBar({ products, setProducts}) {
     </>
   )
 }
-
