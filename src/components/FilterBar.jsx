@@ -10,7 +10,6 @@ export default function FilterBar({ products, setProducts}) {
   // Update products when search term is entered
   function handleSearchChange(e) {
     setSearchTerm(e.target.value)
-    setProducts(sortedProducts)
   }
 
   // Update products when sort by is changed
@@ -49,7 +48,7 @@ export default function FilterBar({ products, setProducts}) {
     }
   })
 
-    
+  useEffect (() => {setProducts(sortedProducts)}, [searchTerm])
   
   
   
