@@ -1,30 +1,32 @@
 import React, { useState} from 'react'
+import { useEffect } from 'react'
 
 export default function FilterBar({ products, setProducts}) {
+// Define States
   const [searchTerm, setSearchTerm] = useState('')
   const [sortBy, setSortBy] = useState('price')
   const [sortOrder, setSortOrder] = useState('asc')
 
+  // Update products when search term is entered
   function handleSearchChange(e) {
     setSearchTerm(e.target.value)
-    setProducts(sortedProducts)
   }
 
+  // Update products when sort by is changed
   function handleSortChange(e) {
     setSortBy(e.target.value)
     setProducts(sortedProducts)
   }
 
+  // Update products when sort order is changed
   function handleSortOrderChange(e) {
     setSortOrder(e.target.value)
     setProducts(sortedProducts)
   }
 
-  let filteredProducts = products.filter((product) => 
-    product.title.toLowerCase().includes(searchTerm.toLowerCase())
-  )
+  
 
-  const sortedProducts = filteredProducts.sort((a, b) => {
+  const sortedProducts = products.sort((a, b) => {
     switch (sortBy) {
     case 'price':
       if (sortOrder === 'asc') {
@@ -42,16 +44,24 @@ export default function FilterBar({ products, setProducts}) {
       return 0
     }
   })
+
+  function searchProducts(){
+    let filteredProducts = products.filter((product) => 
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    console.log(filteredProducts)
+    setProducts(filteredProducts)
+  }
   
-  
+  useEffect(() =>{searchProducts()}, [searchTerm] )
   
   return (
     <>
-      <div class="container filter-bar bg-light col-8">
-        <div class="row justify-content-center">
-          <div class="col-9 col-sm-9 col-lg-3 text-center m-2">
+      <div className="container filter-bar bg-light col-8">
+        <div className="row justify-content-center">
+          <div className="col-9 col-sm-9 col-lg-3 text-center m-2">
             <input
-              class="form-control"
+              className="form-control"
               type="text"
               placeholder="Search by name"
               value={searchTerm}
@@ -60,14 +70,17 @@ export default function FilterBar({ products, setProducts}) {
             />
           </div>
           <select
-            class="btn btn-secondary dropdown-toggle col-9 col-sm-9 col-lg-3 m-2"
+            className="btn btn-secondary dropdown-toggle col-9 col-sm-9 col-lg-3 m-2"
             value={sortBy}
             onChange={handleSortChange}
           >
             <option value="price">Price</option>
             <option value="name">Name</option>
           </select>
-          <select class="btn btn-secondary dropdown-toggle col-9 col-sm-9 col-lg-3 m-2" value={sortOrder} onChange={handleSortOrderChange}>
+          <select 
+            className="btn btn-secondary dropdown-toggle col-9 col-sm-9 col-lg-3 m-2" 
+            value={sortOrder} 
+            onChange={handleSortOrderChange}>
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
           </select>
