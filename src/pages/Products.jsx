@@ -81,8 +81,13 @@ export default function Products() {
             )}
           </div>
         </div> ) : (
-          <div className='container justify-content-center'>
-            <h1 className="center-text">There are no Products Listed</h1>
+          <div className='container-fluid col-6'>
+            <div className='row col-3'>
+              <div className="spinner">
+                <span>Loading...</span>
+                <div className="half-spinner"></div>
+              </div>
+            </div>
           </div>
         )}
     </>  
