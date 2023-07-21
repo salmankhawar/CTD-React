@@ -71,16 +71,16 @@ export default function FilterBar({ products, setProducts}) {
             className="btn btn-secondary dropdown-toggle col-9 col-sm-9 col-lg-3 m-2"
             value={sortBy}
             onChange={handleSortChange}
-          >
-            <option value="price">Price</option>
+          > 
             <option value="name">Name</option>
+            <option value="price">Price</option>
           </select>
           <select 
             className="btn btn-secondary dropdown-toggle col-9 col-sm-9 col-lg-3 m-2" 
             value={sortOrder} 
             onChange={handleSortOrderChange}>
-            <option value="asc">Ascending</option>
             <option value="desc">Descending</option>
+            <option value="asc">Ascending</option>
           </select>
         </div>
       </div>
