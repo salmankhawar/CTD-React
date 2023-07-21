@@ -79,7 +79,11 @@ export default function Products() {
               <ProductThumbnail product={product} key={i} API_URL={API_URL} getProducts={getProducts} />
             )}
           </div>
-        </div> ) : (<h1 className="center-text">There are no Products Listed</h1>)}
+        </div> ) : (
+          <div className='container justify-content-center'>
+            <h1 className="center-text">There are no Products Listed</h1>
+          </div>
+        )}
     </>  
   )
 }
