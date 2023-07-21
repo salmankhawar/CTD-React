@@ -31,7 +31,9 @@ export default function Products() {
     if (usdgbp > 0) {
       try { let productsData = await axios.get(`${API_URL}`) 
         if (productsData.data.length > 0) {
-          productsData.data.map((product) => {product.price = product.currency == 'GBP' ? Math.round(product.price/usdgbp * 100)/100 : product.price})
+          productsData.data.map((product) => {
+            product.price = product.currency == 'GBP' ? Math.round(product.price/usdgbp * 100)/100 : product.price
+          })
           setProducts(productsData.data) 
         }
       } catch(err){
