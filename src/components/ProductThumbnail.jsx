@@ -29,7 +29,7 @@ export default function ProductThumbnail({ product, i, API_URL, getRates}) {
         <p className="card-text">{product.description.length > 250 ? `${product.description.substring(0, 250)}...` : product.description}</p>
       </div>
       <ul className="list-group list-group-flush">
-        <li className="list-group-item text-center">Available to buy: {product.count} {product.uom}</li>
+        <li className="list-group-item text-center">Available Quantity: {product.count} {product.uom}</li>
         <li className="list-group-item text-center">Price: $ {product.price}/{product.uom}</li>
         <li className="list-group-item">
           <form className="d-grid gap-2 col-6 mx-auto" onSubmit={(e) => sendForm(e)}>

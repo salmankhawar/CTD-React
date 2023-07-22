@@ -81,12 +81,9 @@ export default function Products() {
             )}
           </div>
         </div> ) : (
-          <div className='container-fluid col-6'>
-            <div className='row col-3'>
-              <div className="spinner">
-                <span>Loading...</span>
-                <div className="half-spinner"></div>
-              </div>
+          <div className='d-flex justify-content-center text-primary m-5'>
+            <div class="spinner-border" role="status">
+              <span className="visually-hidden">Loading...</span>
             </div>
           </div>
         )}
