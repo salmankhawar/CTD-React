@@ -5,7 +5,7 @@ Fetches live exchange rate from Apilayer to convert price of products listed in 
 
 ## Step by step instructions to setup in local environment
 
-** Note: Make sure you have your API setup and your Apilayer access key. 
+** Note: Make sure you have your API setup and your Apilayer currency data access key. 
 
 1. Clone repo and save it on your computer in a separate folder
 2. Open root folder with Visual Studio Code
@@ -25,7 +25,7 @@ REACT_APP_EAPI_KEY= "Your API key from API Layer"
 `https://github.com/salmankhawar/CTD-API`
 
 Additional Link:
-API Layer: `https://apilayer.com/marketplace/fixer-api`
+API Layer: `https://apilayer.com/marketplace/currency_data-api`
 
 
 
