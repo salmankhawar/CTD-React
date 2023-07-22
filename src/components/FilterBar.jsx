@@ -59,7 +59,7 @@ export default function FilterBar({ products, setProducts}) {
         <div className="row justify-content-center">
           <div className="col-9 col-sm-9 col-lg-3 text-center m-2">
             <input
-              className="form-control"
+              className="form-control text-center"
               type="text"
               placeholder="Search by name"
               value={searchTerm}
